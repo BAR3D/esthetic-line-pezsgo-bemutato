@@ -331,3 +331,17 @@ body.rc-t-pezsgo, .rc-pezsgo {
   --rcD0: #f8f3ec; --rcD0r: 248,243,236; --rcD1: #fffaf3; --rcD1r: 255,250,243; --rcT1: #3a2d22; --rcT2: #6e5d4e; --rcINK: #fffaf3; }
 .rc-pezsgo .rc-welcome b { filter: drop-shadow(0 2px 16px rgba(255,250,243,.95)) !important; text-shadow: none !important; }
 .rc-pezsgo .rc-welcome small { color: var(--rcA4); }
+
+/* ===================== sima ajtónyitás (teljesítmény) ===================== */
+/* a szárnyak és a köszöntő előre saját rétegen – a nyitás első képkockájában nem kell újrarajzolni őket */
+.rc-doors i { will-change: transform; } .rc-doors .rc-welcome { will-change: opacity; }
+/* fényrobbanás: szélesség + óriási elmosott árnyék helyett előre megrajzolt fénysáv, amit a videókártya nyújt (scaleX) */
+.rc-luxus .rc-seam { left: 0; width: 100%; margin-left: 0; box-shadow: none; transform: scaleX(.004); will-change: transform, opacity;
+  background: linear-gradient(90deg, transparent 0, rgba(var(--rcA1r, 255,236,180),.05) 25%, rgba(var(--rcA1r, 255,240,200),.55) 42%, rgba(var(--rcA0r, 255,248,228),.95) 50%, rgba(var(--rcA1r, 255,240,200),.55) 58%, rgba(var(--rcA1r, 255,236,180),.05) 75%, transparent 100%); }
+.rc-luxus .rc-doors.open .rc-seam { animation: rcBurst2 1.3s ease-out forwards; }
+@keyframes rcBurst2 { 0% { transform: scaleX(.004); opacity: 1; } 35% { transform: scaleX(.55); opacity: 1; } 100% { transform: scaleX(1.5); opacity: 0; } }
+/* a logó fénye: három nagy elmosott árnyék helyett egyetlen színátmenet (olcsón rajzolható) */
+.rc-medal { box-shadow: 0 0 0 3px var(--rcA2, #e2c27a), 0 0 0 12px rgba(var(--rcD0r, 10,9,7),.9), 0 0 0 14px rgba(var(--rcA2r, 226,194,122),.55), 0 0 50px 4px rgba(var(--rcA2r, 226,194,122),.3); }
+.rc-medal::before { content: ''; position: absolute; inset: -70%; z-index: -1; border-radius: 50%; pointer-events: none;
+  background: radial-gradient(circle closest-side, transparent 0 41.5%, rgba(var(--rcA2r, 226,194,122),.18) 43%, rgba(var(--rcA2r, 226,194,122),.07) 55%, rgba(var(--rcA2r, 226,194,122),.025) 75%, transparent 100%); }
+@media (max-width: 760px) { .rc-luxus .rc-dust { opacity: .7; } }

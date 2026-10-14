@@ -47,6 +47,8 @@ LAYOUTS.recepcio = function () {
     const ph = $('.rc-photo', stage); if (ph) { let mx = 0, my = 0, cx = 0, cy = 0; FX.on(window, 'pointermove', (e) => { mx = e.clientX / innerWidth - 0.5; my = e.clientY / innerHeight - 0.5; }, { passive: true });
       let lpx = 1e9, lpy = 1e9; FX.tick(() => { if (busy()) return; cx += (mx - cx) * 0.04; cy += (my - cy) * 0.04; const px = Math.round((cx * -16 - ((ang % 360) / 360) * 20) * 10) / 10, py = Math.round(cy * -100) / 10; if (px === lpx && py === lpy) return; lpx = px; lpy = py; ph.style.transform = `scale(1.05) translate3d(${px}px, ${py}px, 0)`; }); }   // a valódi(szerű) recepciókép enyhe mélységgel mozdul
     const quick = FX.reduce || /thumb=1/.test(location.search);
+    // a termek és a háttér képeit már az ajtó előtti várakozás alatt kibontjuk (különben a nyitás első pillanatában akadna)
+    if (!quick) [...new Set([...rooms.map((r) => r.img), C.recepcio && C.recepcio.hatter ? img(C.recepcio.hatter) : ''].filter(Boolean))].forEach((u) => { const im = new Image(); im.decoding = 'async'; im.src = u; if (im.decode) im.decode().catch(() => {}); });
     const varj = (C.recepcio && C.recepcio.ajtoIdo) || 2200;   // ennyi ideig állunk az ajtó előtt (ms) – el lehessen olvasni
     FX.later(() => { doors.classList.add('open'); stage.classList.add('in'); FX.later(() => { doors.style.display = 'none'; }, 1600); }, quick ? 0 : varj);
     let intro = quick ? 1 : 0; const t0 = performance.now() + (quick ? 0 : varj);   // belépő kamera: messziről beúszik
