@@ -1,0 +1,22 @@
+:root {
+  color-scheme: dark;
+  --bg: #121212; --bg-2: #1d1d1d; --glass: rgba(41,41,41,.6); --glass-2: rgba(55,54,54,.64);
+  --line: rgba(246,238,235, .12); --line-2: rgba(246,238,235, .22);
+  --ink: #f7f5f3; --ink-2: #c9c8c6; --muted: #979695;
+  --gold: #f1c6c0; --gold-2: #f6dad6; --rose: #d9d9d9; --cream: #fbf7f0; --ok: #9fdcb8; --warn: #f2b47c;
+  --line-rgb: 246,238,235; --shade-rgb: 14,14,14; --surface-rgb: 25,25,25; --accent-rgb: 241,198,192; --rose-rgb: 217,217,217; --cream-rgb: 251,247,240;
+  --on-accent: #0d0d0d; --paper: #f6f4f0; --paper-2: #e9e5de; --panel: #222222; --panel-hover: #2b2b2b; --drawer: #1b1b1b; --glow: #3a3231; --logo-edge: #a38783;
+  --r: 22px; --r-sm: 14px;
+  --serif: Fraunces, "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  --sans: Inter, -apple-system, "Segoe UI Variable", "Segoe UI", system-ui, sans-serif;
+  --ease: cubic-bezier(.2, .8, .2, 1);
+}
+/* világos felépítések (magazin, minimal, katalógus, pop): ugyanabból a palettából számolt világos változók */
+body.light {
+  color-scheme: light;
+  --bg: #f6f4f0; --bg-2: #e9e5de; --glass: rgba(255,255,255,.74); --glass-2: rgba(255,255,255,.88);
+  --line: rgba(14,14,14, .10); --line-2: rgba(14,14,14, .20); --line-rgb: 14,14,14;
+  --ink: #0d0d0d; --ink-2: rgba(14,14,14, .74); --muted: rgba(14,14,14, .52);
+  --gold: #a38783; --gold-2: #f1c6c0; --on-accent: #fff; --cream: #fff;
+  --surface-rgb: 255,255,255; --panel: #fff; --panel-hover: #e9e5de; --drawer: #f6f4f0; --paper: #fff;
+}
